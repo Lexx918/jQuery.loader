@@ -1,0 +1,44 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" charset="utf-8"></script>
+<script src="jQuery.loader.js" charset="utf-8"></script>
+<script>
+$(function(){
+    var item1, item2;
+
+    $('#add1').click(function(){
+        item1 = $.loader({
+            on: {duration: 500, message: 'Сохраняю...', addClass: 'save-on'},
+            off: {duration: 1500, message: 'Сохранено.', addClass: 'save-off'}
+        });
+    });
+    $('#remove1').click(function(){
+        $.loader('off', item1);
+    });
+
+    $('#add2').click(function(){
+        item2 = $.loader({
+            on: {duration: 200, message: 'Загружаю... ждите!', addClass: 'load-on'},
+            off: {duration: 500, message: 'Загружено.', addClass: 'load-off'}
+        });
+    });
+    $('#remove2').click(function(){
+        $.loader('off', item2);
+    });
+});
+</script>
+<style type="text/css">
+.loader-container {position: fixed; right: 20px; bottom: 20px; z-index: 1000; background: #eee}
+    .loader-container .save-on {font-size: 14px; color: #f00}
+    .loader-container .save-off {font-size: 14px; color: #262}
+    .loader-container .load-on {font-size: 18px; color: #f00}
+    .loader-container .load-off {font-size: 18px; color: #262}
+</style>
+</head>
+<body>
+<input id="add1" type="button" value="Add 1" /><br />
+<input id="add2" type="button" value="Add 2" /><br />
+<input id="remove1" type="button" value="Remove 1" /><br />
+<input id="remove2" type="button" value="Remove 2" />
+</body>
+</html>
